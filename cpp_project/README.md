@@ -68,11 +68,11 @@ The program welcomes the user and displays three options:
 
 1. Clone the repository:
    ```bash
-   git clone <repository-url>
+   git clone https://github.com/Ahmed-Ashraf-84/Embedded_Linux.git
    ```
 2. Navigate to the project directory:
    ```bash
-   cd <project-directory>
+   cd cpp_project
    ```
 3. Compile the program:
    ```bash
