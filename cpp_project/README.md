@@ -1,6 +1,6 @@
 # Bluetooth & WiFi Control Program
 
-![Static Badge](https://img.shields.io/badge/Embedded%20Linux-30%25-blue?style=plastic&logo=github&logoColor=white&label=Embedded%20Linux&labelColor=Black&color=blue) ![Static Badge](https://img.shields.io/badge/C%2B%2B-%2B20-orange?style=plastic&logo=c%2B%2B&logoColor=white&label=C%2B%2B&labelColor=grey&color=red)
+ ![Static Badge](https://img.shields.io/badge/C%2B%2B-%2B20-orange?style=plastic&logo=c%2B%2B&logoColor=white&label=C%2B%2B&labelColor=grey&color=red)
 
 
 
