@@ -1,0 +1,8 @@
+#!/bin/bash
+
+
+#this function need to be enabled in your kernal configuration in this file /boot/config-5.15.0-116-generic
+
+# sudo apt-get install cpufrequtils 
+
+#you can use grep "FREQ" /boot/config-5.15.0-116-generic

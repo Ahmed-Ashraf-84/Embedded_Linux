@@ -1,0 +1,91 @@
+#!/bin/bash
+
+
+source control_leds
+source directory_sync
+source network_info
+source system_info
+source bat_config
+source cpu_config
+source kernal_log
+source sys_control
+
+
+LOG_FILE="/home/ahmed/Desktop/bash_project/log_file"
+
+# Check if running as root
+if [ "$EUID" -ne 0 ]; then
+  MODE="user"
+  echo "Running in User Mode"
+else
+  MODE="admin"
+  echo "Running in Admin Mode"
+fi
+
+echo "$(date): Application started in $MODE mode" >> "$LOG_FILE"
+
+while true; do
+  echo "Select an option:"
+  echo "1) System Info"
+  echo "2) Devices (Admin Mode Only)"
+  echo "3) Directory Sync"
+  echo "4) Network Info"
+  echo "5) Reboot/Shutdown (Admin Mode Only)"
+  echo "6) Kernel Logs"
+  echo "7) Exit"
+
+  read -p "Enter choice: " choice
+
+  case $choice in
+    1) sys_info ;;
+    2) if [ "$MODE" == "admin" ]; then
+	   echo "1) change cpu policy"		#not allowed in my device
+	   echo "2) set battery threshold"
+	   echo "3) control PC leds"
+	   read -p "Enter choice: " cho
+	   
+	   case $cho in
+		   1)
+			   echo"not allowed in my device" ;  exit 1 ;;
+		   2)
+			   bat_config_threshold ;;
+		   3)  
+			   echo"1) capslock"
+			   echo"2) numlock"
+			   read -p "Enter choice" leds
+			   read -p "Enter the state{ 0 or 1}" state
+
+			   case $leds in
+				   1) 
+					   leds="capslock" ;;
+				   2)	   
+					   leds="numlock" ;;
+				   *)
+					   echo"invalid input" ; exit 1 ;;
+			   esac
+			   
+	 		   pc_leds $leds  $state ;;		   
+		   *)
+			   echo"invalid input" ; exit 1 ;;		   
+	   
+	   esac  
+    	else 
+	    echo "Admin Mode required"; 
+	fi ;;
+    3) dir_sync ;;
+    4) net_info ;;
+    5) if [ "$MODE" == "admin" ]; then
+	    system_control ;
+        else 
+	    echo "Admin Mode required"; 
+	fi ;;
+    6) kernal_Log ;;
+    7) echo "Exiting..."; break ;;
+    *) echo "Invalid option";;
+  esac
+done
+
+
+
+
+

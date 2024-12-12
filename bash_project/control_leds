@@ -1,0 +1,19 @@
+#!/bin/bash
+pc_leds()
+{
+	caps_var="capslock"
+	num_var="numlock"
+
+	if [[ "$1" == "$caps_var"  ]] || [[ "$1" == "$num_var"  ]] ; then
+		echo "$2" > "/sys/class/leds/input2::${1}/brightness"
+	else 
+		echo "NAME ERORR"
+	fi	
+
+
+
+}	
+
+
+
+

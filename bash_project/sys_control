@@ -1,0 +1,41 @@
+#!/bin/bash
+
+system_control()
+{
+
+	 echo "1) Reboot"
+	 echo "2) Shutdown"
+	 read -p "choose the required process" CHOICE
+
+	 case $CHOICE in
+	    1) echo "Rebooting system..." >> "$LOG_FILE";
+	       read -p "Are you sure you want to reboot the system? (y/n): " confirm
+      	       if [[ "$confirm" == "y" ]]; then
+	         	sudo reboot;
+	       else
+			echo "Reboot cancelled." >> "$LOG_FILE";
+	       fi
+
+	    2) echo "Shutting down system..." >> "$LOG_FILE";
+	       read -p "Are you sure you want to reboot the system? (y/n): " confirm
+               if [[ "$confirm" == "y" ]]; then
+                        sudo shutdown now;
+               else
+                        echo "shut down cancelled." >> "$LOG_FILE";
+               fi
+ 	 esac
+
+
+
+
+
+
+
+
+
+
+}
+
+
+
+

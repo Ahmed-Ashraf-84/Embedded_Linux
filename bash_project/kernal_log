@@ -1,0 +1,15 @@
+#!/bin/bash
+
+
+kernal_Log()
+{
+	echo "Displaying kernel logs in real time..."
+	tail -f /var/log/kern.log | tee -a "$LOG_FILE"
+
+
+}
+
+
+
+
+

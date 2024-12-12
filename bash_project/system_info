@@ -1,0 +1,24 @@
+#!/bin/bash
+
+
+sys_info()
+{
+
+	echo "system information"
+	echo "cpu info:"
+	echo "model name :$(grep 'model name' /proc/cpuinfo | uniq ) "
+        echo "cache size :$(grep 'cache size' /proc/cpuinfo | uniq ) "
+	echo "frequency :$(grep 'cpu MHz' /proc/cpuinfo | uniq ) " 
+
+	echo "ram info:"
+
+	free -h | grep "Mem" | awk '{print "used: "$2" , free: "$4" , percentage: "$4/$2*100"%" }'
+
+	echo "disk info"
+
+	df -h | grep "^/dev/sd" | awk '{print "size: "$2" , free: "$4", percentage: "$4/$2*100"% " }'
+
+
+
+}
+

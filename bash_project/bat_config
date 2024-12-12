@@ -1,0 +1,31 @@
+#!/bin/bash
+
+
+#you should install tlp by command - sudo atp-get install tlp - and uncomment START_CHARGE_THRESH_BAT0=75
+#								              STOP_CHARGE_THRESH_BAT0=80
+
+
+bat_config_threshold()
+{
+	if ! command -v tlp 2>&1 /dev/null ; then
+		echo "TLP not installed"
+	fi	
+
+	read -p "enter the start threshold : " start_thr
+	read -p "enter the stop threshold : " stop_thr
+
+	if [[ "$stop_thr" > "$start_thr"  ]]  && [[ "$start_thr" > 0  ]] && [[ "$stop_thr" < 100  ]] ; then
+		sudo tlp setcharge "$start_thr" "$stop_thr" BAT0
+	else
+		echo "invalid number"
+	fi
+
+	if [[ $? == 0 ]] ; then
+		echo "the battery threshold set successfully"
+	else
+		echo "failed to set battery threshold"
+	fi	
+
+}
+
+

@@ -1,0 +1,25 @@
+#!/bin/bash
+
+dir_sync()
+{
+
+	read -p "enter the target ID :" target_id
+	read -p "enter the source folder -full path- :" src_folder
+	read -p "enter the target folder -full path- :" target_folder
+
+	if [[ ! -d "$src_folder"  ]];then
+		echo"ERORR:source folder doesn't exist"
+		exit 1
+	fi	
+
+	rsync -a -v -z "$src_folder" "$target_id:$target_folder"
+
+	if [[ $? == 0  ]];then
+		echo"directory synchronized successfully"
+	else
+		echo"ERORR:directory synchronization failed"	
+	fi
+}
+
+
+

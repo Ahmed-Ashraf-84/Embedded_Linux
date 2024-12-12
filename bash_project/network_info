@@ -1,0 +1,18 @@
+#!/bin/bash
+
+net_info()
+{
+
+	ip_add = $( hostname -i  )
+	dns_server = $( grep "nameserver" /etc/resolv.conf | awk '{print $2}'  )
+	rates = $( vnstat -tr 5 )
+
+	echo "IP Address:$ip_add" >> network_log_info
+	echo "DNS Server:$dns_server" >> network_log_info
+	echo "NETWORK Rates:$rates" >> network_log_info
+
+
+
+
+
+}
